@@ -46,7 +46,7 @@ router.post('/', asyncHandler(async (req, res) => {
             const { posterName , productId } = req.body;
             let imageUrl = 'no_url';
             if (req.file) {
-                imageUrl = `https://classy-bubblegum-0e4d00.netlify.app/image/poster/${req.file.filename}`;
+                imageUrl = `http://localhost:3000/image/poster/${req.file.filename}`;
             }
 
             if (!posterName) {
@@ -95,7 +95,7 @@ router.put('/:id', asyncHandler(async (req, res) => {
 
 
             if (req.file) {
-                image = `https://classy-bubblegum-0e4d00.netlify.app/image/poster/${req.file.filename}`;
+                image = `http://localhost:3000/image/poster/${req.file.filename}`;
             }
 
             if (!posterName || !image) {
