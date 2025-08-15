@@ -46,9 +46,12 @@ router.post('/', asyncHandler(async (req, res) => {
                 return res.json({ success: false, message: err });
             }
             const { name } = req.body;
+          
             let imageUrl = 'no_url';
             if (req.file) {
-                imageUrl = `http://localhost:3000/image/category/${req.file.filename}`;
+            const BASE_URL = process.env.BASE_URL || 'http://localhost:3000';
+            imageUrl = `${BASE_URL}/image/category/${req.file.filename}`;
+
             }
             console.log('url ', req.file)
 
@@ -96,7 +99,7 @@ router.put('/:id', asyncHandler(async (req, res) => {
             let image = req.body.image;
 
             if (req.file) {
-                image = `http://localhost:3000/image/category/${req.file.filename}`;
+                image = `${BASE_URL}/image/category/${req.file.filename}`;
             }
 
             if (!name || !image) {
